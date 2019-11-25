@@ -11,14 +11,15 @@ namespace TestCsharp
         static void Main(string[] args)
         {
 
-            Zadatak1();
+            //Zadatak1();
+            Zadatak2();
         }
 
         private static void Zadatak1()
         {
-            Console.Write("Unesite prvi broj:");
+            Console.Write("Unesite prvi broj: ");
             var prvi = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Unesite drugi broj:");
+            Console.Write("Unesite drugi broj: ");
             var drugi = Convert.ToInt32(Console.ReadLine());
 
             var prviParan = false;
@@ -46,6 +47,77 @@ namespace TestCsharp
             }
 
             Console.ReadKey();
+        }
+
+        private static void Zadatak2()
+        {
+
+            string unos = "";
+            var noviBroj = 0;
+            List<int> listaUnosa = new List<int>();
+            while (noviBroj >= 0) 
+            {
+                Console.Write("Unesite novi broj: ");
+                unos = Console.ReadLine();
+                if (!string.IsNullOrEmpty(unos)) 
+                {
+                    noviBroj = Convert.ToInt32(unos);
+                    if (noviBroj >= 0) listaUnosa.Add(noviBroj);
+                } else
+                {
+                    noviBroj = 0;
+                }
+
+            }
+
+            var suma = Convert.ToDecimal(IzracunajSumu(listaUnosa));
+            IzracunajAritmetickuSredinu(suma, listaUnosa.Count());
+            SortirajBrojeve(listaUnosa);
+
+            Console.ReadKey();
+        }
+
+        private static int IzracunajSumu(List<int> listaUnosa)
+        {
+            var suma = 0;
+
+            foreach(int broj in listaUnosa)
+            {
+                suma += broj;
+            }
+
+
+            Console.WriteLine("Suma unetih brojeva je: {0}", suma);
+
+            return suma;
+        }
+
+        private static void IzracunajAritmetickuSredinu(decimal suma, int brojElemenata)
+        {
+            var aritmeticakSredina = suma / brojElemenata;
+            Console.WriteLine("Aritmeticka sredina unosa je: {0}", aritmeticakSredina);
+        }
+
+        private static void SortirajBrojeve(List<int> listaUnosa)
+        {
+            for (int i = 0; i < listaUnosa.Count() - 1; i++)
+            {
+                for (int j = i+1; j < listaUnosa.Count(); j++)
+                {
+                    if (listaUnosa[i] < listaUnosa[j])
+                    {
+                        var temp = listaUnosa[i];
+                        listaUnosa[i] = listaUnosa[j];
+                        listaUnosa[j] = temp;
+                    }
+                }
+            }
+
+            Console.Write("Sortirana lista unetih brojeva:");
+            foreach (int unos in listaUnosa)
+            {
+                Console.Write(" {0}", unos);
+            }
         }
     }
 }
