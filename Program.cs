@@ -12,7 +12,8 @@ namespace TestCsharp
         {
 
             //Zadatak1();
-            Zadatak2();
+            //Zadatak2();
+            Zadatak3();
         }
 
         private static void Zadatak1()
@@ -118,6 +119,17 @@ namespace TestCsharp
             {
                 Console.Write(" {0}", unos);
             }
+        }
+
+        private static void Zadatak3()
+        {
+            Console.Write("Unesite neki tekst: ");
+            var unos = Console.ReadLine();
+            StringFunctions.CountWords(unos);
+            StringFunctions.CountSpaces(unos);
+            StringFunctions.ShortestWord(unos);
+            StringFunctions.LongestWord(unos);
+            Console.ReadKey();
         }
     }
 }
